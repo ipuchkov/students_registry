@@ -1,7 +1,7 @@
 <%= simple_form_for @student, :remote => true do |f| %>
   <%= f.input :surname %>
   <%= f.input :name %>
-  <%= f.association :group %>
+  <%= f.association :group, :label_method => :number %>
   <%= f.input :birthdate %>
   <%= f.input :email %>
   <%= f.input :ip %>

@@ -1,5 +1,9 @@
 <tr>
   <td><%= student.surname %></td>
   <td><%= student.name %></td>
+  <td><%= student.group.number %></td>
+  <td><%= I18n.l(student.birthdate) %></td>
   <td><%= student.email %></td>
+  <td><%= student.ip %></td>
+  <td><%= I18n.l(student.registration_time, format: :long) %></td>
 </tr>
