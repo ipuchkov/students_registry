@@ -14,5 +14,6 @@ end
 
 group :development, :test do
   gem 'hirb'
+  gem 'rails-erd', '>= 1.4.2'
 end
 
