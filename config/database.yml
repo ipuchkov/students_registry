@@ -1,0 +1,11 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+
+development:
+  <<: *default
+  database: student_registry_development
+
+test:
+  <<: *default
+  database: student_registry_test
