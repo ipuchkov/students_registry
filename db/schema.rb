@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150827100359) do
+ActiveRecord::Schema.define(version: 20150827145501) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "average_marks", force: :cascade do |t|
+    t.integer  "semester_id"
+    t.integer  "student_id"
+    t.decimal  "value",         precision: 3, scale: 2, default: 0.0
+    t.integer  "subject_count",                         default: 0
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
+  end
+
+  add_index "average_marks", ["semester_id"], name: "index_average_marks_on_semester_id", using: :btree
+  add_index "average_marks", ["student_id"], name: "index_average_marks_on_student_id", using: :btree
 
   create_table "courses", force: :cascade do |t|
     t.integer  "number"
@@ -83,6 +95,8 @@ ActiveRecord::Schema.define(version: 20150827100359) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "average_marks", "semesters"
+  add_foreign_key "average_marks", "students"
   add_foreign_key "groups", "courses"
   add_foreign_key "marks", "semesters"
   add_foreign_key "marks", "students"
