@@ -3,4 +3,6 @@ class Student < ActiveRecord::Base
   has_many   :semesters, :through   => :group
   has_many   :subjects,  :through   => :group
   has_many   :marks,     :dependent => :destroy
+
+  scope :ordered, -> { order(:surname, :name) }
 end

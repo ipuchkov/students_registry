@@ -1,0 +1,13 @@
+<table>
+  <thead>
+    <tr>
+      <td>Фамилия</td>
+      <td>Имя</td>
+    </tr>
+  </thead>
+  <tbody class='students_list'>
+    <%= render @students %>
+  </tbody>
+</table>
+<%= link_to "Добавить студента", new_student_path, :remote => true %>
+<div class="student-form" style='display:none'></div>
