@@ -1,6 +1,10 @@
 <%= simple_form_for @student, :remote => true do |f| %>
   <%= f.input :surname %>
   <%= f.input :name %>
+  <%= f.association :group %>
+  <%= f.input :birthdate %>
   <%= f.input :email %>
+  <%= f.input :ip %>
+  <%= f.input :registration_time %>
   <%= f.submit 'Добавить' %>
 <% end %>
