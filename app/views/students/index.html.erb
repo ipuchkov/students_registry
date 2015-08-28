@@ -1,18 +1,35 @@
-<table>
-  <thead>
-    <tr>
-      <td>Фамилия</td>
-      <td>Имя</td>
-      <td>Номер группы</td>
-      <td>Дата рождения</td>
-      <td>Email</td>
-      <td>IP адрес</td>
-      <td>Время регистрации</td>
-    </tr>
-  </thead>
-  <tbody class='students_list'>
-    <%= render @students %>
-  </tbody>
-</table>
-<%= link_to "Добавить студента", new_student_path, :remote => true %>
-<div class="student-form" style='display:none'></div>
+<div class="students">
+  <table>
+    <thead>
+      <tr>
+        <td>Фамилия</td>
+        <td>Имя</td>
+        <td>Номер группы</td>
+        <td>Дата рождения</td>
+        <td>Email</td>
+        <td>IP адрес</td>
+        <td>Время регистрации</td>
+      </tr>
+    </thead>
+    <tbody class='students_list'>
+      <%= render @students %>
+    </tbody>
+  </table>
+  <%= link_to "Добавить студента", new_student_path, :remote => true %>
+  <div class="student-form" style='display:none'></div>
+</div>
+<div class="top">
+  <h2>10 студентов с наивысшим баллом</h2>
+  <% @courses.each do |course| %>
+    <div class="course <%= course.number %>">
+      <h3><%= course.human_number %></h3>
+      <% course.available_semester_numbers.each do |semester_number| %>
+        <span><%= link_to "#{semester_number} семестр", top_students_path(course.id, semester_number), :remote => true %></span>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="top_students" style='display:none'>
+    <%= link_to "x", '#', :class => 'close_link' %>
+    <div class="top_list"></div>
+  </div>
+</div>

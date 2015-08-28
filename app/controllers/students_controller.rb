@@ -2,6 +2,7 @@ class StudentsController < ApplicationController
   before_filter :load_students, :only => [:index, :create]
 
   def index
+    @courses = Course.ordered
     respond_to do |format|
       format.html
     end
@@ -24,6 +25,14 @@ class StudentsController < ApplicationController
         else
           render :new
         end
+      end
+    end
+  end
+
+  def top
+    respond_to do |format|
+      format.js do
+        @students = Student.top(params[:course_id], params[:semester_number])
       end
     end
   end
