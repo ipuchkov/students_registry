@@ -423,6 +423,13 @@ ALTER TABLE ONLY subjects
 
 
 --
+-- Name: index_average_marks_on_number; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_average_marks_on_number ON average_marks USING btree (value);
+
+
+--
 -- Name: index_average_marks_on_semester_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -483,6 +490,13 @@ CREATE INDEX index_semester_subjects_on_subject_id ON semester_subjects USING bt
 --
 
 CREATE INDEX index_semesters_on_group_id ON semesters USING btree (group_id);
+
+
+--
+-- Name: index_semesters_on_number; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_semesters_on_number ON semesters USING btree (number);
 
 
 --
@@ -629,4 +643,8 @@ INSERT INTO schema_migrations (version) VALUES ('20150827145501');
 INSERT INTO schema_migrations (version) VALUES ('20150828111109');
 
 INSERT INTO schema_migrations (version) VALUES ('20150828145818');
+
+INSERT INTO schema_migrations (version) VALUES ('20150828162855');
+
+INSERT INTO schema_migrations (version) VALUES ('20150828163124');
 
