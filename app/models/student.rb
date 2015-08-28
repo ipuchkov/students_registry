@@ -15,11 +15,11 @@ class Student < ActiveRecord::Base
   #студенты с одинаковым ip адресом и как минимум одной характеристикой преподавателя
   scope :duplicate_ip_with_characteristic, -> { where("ip in (SELECT ip FROM students GROUP BY ip HAVING count(ip) > 1 and count(characteristic) > 0)").order('ip') }
 
-  #однокурсники с средним баллом между ... и ... в семестре и с именем %имя%
+  #однокурсники с средним баллом между min и max в семестре и с именем name
   scope :for_search, ->(course_id, semester_number, min, max, name) { joins(:course, :average_marks => [:semester]).
                                                                       where(:courses => { :id => course_id }, :semesters => { :number => semester_number }).
                                                                       where("average_marks.value BETWEEN #{min} AND #{max}").
-                                                                      where("students.name LIKE '%#{name}%'")
+                                                                      where("LOWER(students.name) LIKE LOWER('#{name}')")
   }
 
   normalize_attribute :email
