@@ -34,6 +34,7 @@ Group.find_each do |g|
     student.ip                = Faker::Internet.ip_v4_address
     student.birthdate         = Faker::Time.between(DateTime.now - 20.years, DateTime.now - 10.years).to_date
     student.registration_time = Faker::Time.between(DateTime.now - 10.days, DateTime.now)
+    student.characteristic    = Random.rand(0..1).zero? ? Faker::Lorem.sentence(5) : nil
   end
 end
 

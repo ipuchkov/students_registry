@@ -1,4 +1,8 @@
 <h2><%= @student.fullname %></h2>
+<div class="characteristic">
+  <h3>Характеристика преподавателя</h3>
+  <%= @student.characteristic %>
+</div>
 <% @student.semesters.each do |semester| %>
   <h3><%= semester.human_number %></h3>
   <table>
