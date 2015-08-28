@@ -15,4 +15,16 @@ class Student < ActiveRecord::Base
 
   validates_presence_of :name, :surname, :email
   validates_uniqueness_of :email
+
+  def fullname
+    [surname, name].join(' ')
+  end
+
+  def mark_for(semester_id, subject_id)
+    marks.by_semester_and_subject(semester_id, subject_id).first
+  end
+
+  def average_mark_for(semester_id)
+    average_marks.find_by(:semester_id => semester_id)
+  end
 end

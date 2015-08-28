@@ -1,0 +1,24 @@
+<h2><%= @student.fullname %></h2>
+<% @student.semesters.each do |semester| %>
+  <h3><%= semester.human_number %></h3>
+  <table>
+    <thead>
+      <tr>
+        <td>Предмет</td>
+        <td>Оценка</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% semester.subjects.each do |subject| %>
+        <tr>
+          <td><%= subject.title %></td>
+          <td><%= @student.mark_for(semester.id, subject.id).value %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <td>Средний балл</td>
+        <td><%= @student.average_mark_for(semester.id).value %></td>
+      </tr>
+    </tbody>
+  </table>
+<% end %>

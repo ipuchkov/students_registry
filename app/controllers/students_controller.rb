@@ -29,6 +29,14 @@ class StudentsController < ApplicationController
     end
   end
 
+  def show
+    respond_to do |format|
+      format.js do
+        @student = Student.find(params[:id])
+      end
+    end
+  end
+
   def top
     respond_to do |format|
       format.js do

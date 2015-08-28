@@ -18,6 +18,7 @@
   <%= link_to "Добавить студента", new_student_path, :remote => true %>
   <div class="student-form" style='display:none'></div>
 </div>
+
 <div class="top">
   <h2>10 студентов с наивысшим баллом</h2>
   <% @courses.each do |course| %>
@@ -30,6 +31,11 @@
   <% end %>
   <div class="top_students" style='display:none'>
     <%= link_to "x", '#', :class => 'close_link' %>
-    <div class="top_list"></div>
+    <div class="top_list for_empty"></div>
   </div>
+</div>
+
+<div class="show_student" style='display:none'>
+  <%= link_to "x", '#', :class => 'close_link' %>
+  <div class="student for_empty"></div>
 </div>

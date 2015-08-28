@@ -1,5 +1,5 @@
 <tr>
-  <td><%= student.surname %></td>
+  <td><%= link_to student.surname, student_path(student), :remote => true %></td>
   <td><%= student.name %></td>
   <td><%= student.group.number %></td>
   <td><%= I18n.l(student.birthdate) %></td>
