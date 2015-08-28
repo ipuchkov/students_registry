@@ -11,7 +11,7 @@ class AverageMarkCalculator
     average_mark.update_attributes(:value => new_value, :subject_count => new_subject_count)
   end
 
-  #private
+  private
 
   def new_value
     @new_value ||= begin
