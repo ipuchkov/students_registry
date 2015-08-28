@@ -1,6 +1,6 @@
-## README
+# README
 
-# Инструкция по запуску
+### Инструкция по запуску
 
 ```ruby
 bundle install
