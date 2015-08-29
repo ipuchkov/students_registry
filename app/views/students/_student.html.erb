@@ -6,4 +6,8 @@
   <td><%= student.email %></td>
   <td><%= student.ip %></td>
   <td><%= I18n.l(student.registration_time, format: :long) %></td>
+  <td>
+    <%= link_to "редактировать", edit_student_path(student), :remote => true %>
+    <%= link_to "удалить", student_path(student), :method => :delete, :remote => true %>
+  </td>
 </tr>

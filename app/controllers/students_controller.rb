@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-  before_filter :load_students, :only => [:index, :create]
+  before_filter :load_students, :only => [:index, :create, :destroy, :update]
 
   def index
     @courses = Course.ordered
@@ -33,6 +33,36 @@ class StudentsController < ApplicationController
     respond_to do |format|
       format.js do
         @student = Student.find(params[:id])
+      end
+    end
+  end
+
+  def edit
+    respond_to do |format|
+      format.js do
+        @student = Student.find(params[:id])
+      end
+    end
+  end
+
+  def update
+    respond_to do |format|
+      format.js do
+        @student = Student.find(params[:id])
+        if @student.update_attributes(student_params)
+          render :update
+        else
+          render :edit
+        end
+      end
+    end
+  end
+
+  def destroy
+    respond_to do |format|
+      format.js do
+        @student = Student.find(params[:id])
+        @student.destroy
       end
     end
   end
