@@ -19,3 +19,9 @@ group :development, :test do
   gem 'rails-erd', '>= 1.4.2'
 end
 
+group :test do
+  gem 'database_cleaner'
+  gem 'factory_girl_rails'
+  gem 'rspec-rails'
+end
+
