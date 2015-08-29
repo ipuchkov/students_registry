@@ -14,16 +14,16 @@ class AverageMarkCalculator
   private
 
   def new_value
-    @new_value ||= begin
-                     case action
-                     when :increase
-                       (current_value + mark.value) / new_subject_count
-                     when :decrease
+    @new_value ||= case action
+                   when :increase
+                     (current_value + mark.value) / new_subject_count
+                   when :decrease
+                     if new_subject_count.zero?
+                       0
+                     else
                        (current_value - mark.value) / new_subject_count
                      end
-                   rescue ZeroDivisionError
-                     0
-                 end
+                   end
   end
 
   def new_subject_count
