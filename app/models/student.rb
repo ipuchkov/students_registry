@@ -9,9 +9,9 @@ class Student < ActiveRecord::Base
   scope :ordered, -> { order(:surname, :name) }
 
   # топ 10 студентов курса в семестре
-  scope :top, ->(course_id, semester_number) do
+  scope :top, ->(number) do
     includes(:course, :group, :average_marks => [:semester]).
-      where(:courses => { :id => course_id }, :semesters => { :number => semester_number }).
+      where(:semesters => { :number => number }).
       order('average_marks.value desc, students.surname, students.name').limit(10)
   end
 

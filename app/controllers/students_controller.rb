@@ -70,7 +70,8 @@ class StudentsController < ApplicationController
   def top
     respond_to do |format|
       format.js do
-        @students = Student.top(params[:course_id], params[:semester_number])
+        @course = Course.find(params[:course_id])
+        @students = @course.students.top(params[:semester_number])
       end
     end
   end

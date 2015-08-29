@@ -1,6 +1,7 @@
 class Course < ActiveRecord::Base
   has_many :groups,    :dependent => :destroy
   has_many :semesters, :through   => :groups
+  has_many :students,  :through   => :groups
 
   scope :ordered, -> { order('number asc') }
 
