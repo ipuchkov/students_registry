@@ -34,7 +34,7 @@ class Student < ActiveRecord::Base
 
   normalize_attribute :email
 
-  validates_presence_of :name, :surname, :email
+  validates_presence_of :name, :surname, :email, :group_id
   validates_uniqueness_of :email
 
   def fullname

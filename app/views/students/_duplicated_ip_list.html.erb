@@ -1,0 +1,20 @@
+<table>
+  <thead>
+    <tr>
+      <td>Фамилия</td>
+      <td>Имя</td>
+      <td>IP</td>
+      <td>Характеристика</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @students.each do |student| %>
+      <tr>
+        <td><%= student.surname %></td>
+        <td><%= student.name %></td>
+        <td><%= student.ip %></td>
+        <td><%= student.characteristic %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

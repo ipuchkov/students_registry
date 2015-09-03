@@ -45,3 +45,14 @@ Student.find_each do |student|
     end
   end
 end
+
+Student.where.not(:characteristic => nil).limit(5).each do |student|
+  s = Student.new(ip: student.ip)
+  s.group_id          = Group.last.id
+  s.name              = Faker::Name.first_name
+  s.surname           = Faker::Name.last_name
+  s.email             = Faker::Internet.email
+  s.birthdate         = Faker::Time.between(DateTime.now - 20.years, DateTime.now - 10.years).to_date
+  s.registration_time = Faker::Time.between(DateTime.now - 10.days, DateTime.now)
+  s.save
+end

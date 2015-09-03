@@ -535,83 +535,83 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 
 
 --
--- Name: fk_rails_1f1e6ffb8e; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY groups
-    ADD CONSTRAINT fk_rails_1f1e6ffb8e FOREIGN KEY (course_id) REFERENCES courses(id);
-
-
---
--- Name: fk_rails_339a7dca38; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY students
-    ADD CONSTRAINT fk_rails_339a7dca38 FOREIGN KEY (group_id) REFERENCES groups(id);
-
-
---
--- Name: fk_rails_458877e309; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY average_marks
-    ADD CONSTRAINT fk_rails_458877e309 FOREIGN KEY (student_id) REFERENCES students(id);
-
-
---
--- Name: fk_rails_481581dc88; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: fk_rails_23df3d26ee; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY semester_subjects
-    ADD CONSTRAINT fk_rails_481581dc88 FOREIGN KEY (subject_id) REFERENCES subjects(id);
+    ADD CONSTRAINT fk_rails_23df3d26ee FOREIGN KEY (semester_id) REFERENCES semesters(id);
 
 
 --
--- Name: fk_rails_655284b209; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY semester_subjects
-    ADD CONSTRAINT fk_rails_655284b209 FOREIGN KEY (semester_id) REFERENCES semesters(id);
-
-
---
--- Name: fk_rails_7d036e65c3; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: fk_rails_32d060122a; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY marks
-    ADD CONSTRAINT fk_rails_7d036e65c3 FOREIGN KEY (semester_id) REFERENCES semesters(id);
+    ADD CONSTRAINT fk_rails_32d060122a FOREIGN KEY (student_id) REFERENCES students(id);
 
 
 --
--- Name: fk_rails_8ca33c5652; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: fk_rails_333ad0274f; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY marks
+    ADD CONSTRAINT fk_rails_333ad0274f FOREIGN KEY (semester_id) REFERENCES semesters(id);
+
+
+--
+-- Name: fk_rails_39489a1c18; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY semesters
-    ADD CONSTRAINT fk_rails_8ca33c5652 FOREIGN KEY (group_id) REFERENCES groups(id);
+    ADD CONSTRAINT fk_rails_39489a1c18 FOREIGN KEY (group_id) REFERENCES groups(id);
 
 
 --
--- Name: fk_rails_a7ee45067e; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: fk_rails_57866bf491; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY marks
-    ADD CONSTRAINT fk_rails_a7ee45067e FOREIGN KEY (student_id) REFERENCES students(id);
-
-
---
--- Name: fk_rails_f4a3867823; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY marks
-    ADD CONSTRAINT fk_rails_f4a3867823 FOREIGN KEY (subject_id) REFERENCES subjects(id);
+ALTER TABLE ONLY semester_subjects
+    ADD CONSTRAINT fk_rails_57866bf491 FOREIGN KEY (subject_id) REFERENCES subjects(id);
 
 
 --
--- Name: fk_rails_f611ff5be8; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: fk_rails_89b1f6faae; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY groups
+    ADD CONSTRAINT fk_rails_89b1f6faae FOREIGN KEY (course_id) REFERENCES courses(id);
+
+
+--
+-- Name: fk_rails_94ca7efd74; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY average_marks
-    ADD CONSTRAINT fk_rails_f611ff5be8 FOREIGN KEY (semester_id) REFERENCES semesters(id);
+    ADD CONSTRAINT fk_rails_94ca7efd74 FOREIGN KEY (student_id) REFERENCES students(id);
+
+
+--
+-- Name: fk_rails_c2decd232e; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY average_marks
+    ADD CONSTRAINT fk_rails_c2decd232e FOREIGN KEY (semester_id) REFERENCES semesters(id);
+
+
+--
+-- Name: fk_rails_d1a64f59aa; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY students
+    ADD CONSTRAINT fk_rails_d1a64f59aa FOREIGN KEY (group_id) REFERENCES groups(id);
+
+
+--
+-- Name: fk_rails_e85a1b31bf; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY marks
+    ADD CONSTRAINT fk_rails_e85a1b31bf FOREIGN KEY (subject_id) REFERENCES subjects(id);
 
 
 --

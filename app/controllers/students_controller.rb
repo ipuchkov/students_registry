@@ -76,6 +76,14 @@ class StudentsController < ApplicationController
     end
   end
 
+  def duplicated_ip
+    respond_to do |format|
+      format.js do
+        @students = Student.duplicate_ip_with_characteristic
+      end
+    end
+  end
+
   private
 
   def student_params
