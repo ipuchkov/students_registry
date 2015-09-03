@@ -26,10 +26,10 @@ class Student < ActiveRecord::Base
 
   # однокурсники с средним баллом между min и max в семестре и с именем name
   scope :for_search, ->(course_id, semester_number, min, max, name) do
-    joins(:course, :average_marks => [:semester]).
+    includes(:course, :average_marks => [:semester]).
       where(:courses => { :id => course_id }, :semesters => { :number => semester_number }).
       where("average_marks.value BETWEEN #{min} AND #{max}").
-      where("LOWER(students.name) LIKE LOWER('#{name}')")
+      where("LOWER(students.name) LIKE LOWER('#{name}%')")
   end
 
   normalize_attribute :email

@@ -8,4 +8,8 @@ class Semester < ActiveRecord::Base
   def human_number
     "#{number} семестр"
   end
+
+  def self.uniq_numbers
+    self.ordered.select('number').uniq.map(&:number)
+  end
 end

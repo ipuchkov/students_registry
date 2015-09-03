@@ -1,0 +1,11 @@
+<%= simple_form_for :search, :url => search_path, :remote => true, :method => :get do |f| %>
+  <%= f.input :name, :input_html => { :value => params[:search].try(:[], :name)} %>
+  <%= f.input :course_id, :collection => Course.all, :label_method => :number, :selected => params[:search].try(:[], :course_id) %>
+  <%= f.input :semester, :collection => Semester.uniq_numbers, :selected => params[:search].try(:[], :semester) %>
+  <%= f.input :min, :input_html => { :value => params[:search].try(:[], :min)}, :as => :float %>
+  <%= f.input :max, :input_html => { :value => params[:search].try(:[], :max)}, :as => :float %>
+  <%= f.submit 'Искать' %>
+<% end %>
+<div class="search_list">
+  <%= render :partial => 'top_list' %>
+</div>

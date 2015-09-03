@@ -84,6 +84,15 @@ class StudentsController < ApplicationController
     end
   end
 
+  def search
+    search_params = params.fetch(:search, {})
+    respond_to do |format|
+      format.js do
+        @students = Student.for_search(search_params[:course_id], search_params[:semester], search_params[:min].to_f, search_params[:max].to_f, search_params[:name])
+      end
+    end
+  end
+
   private
 
   def student_params
