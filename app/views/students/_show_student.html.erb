@@ -16,12 +16,12 @@
       <% semester.subjects.each do |subject| %>
         <tr>
           <td><%= subject.title %></td>
-          <td><%= @student.mark_for(semester.id, subject.id).value %></td>
+          <td><%= @student.mark_for(semester.id, subject.id).try(:value) %></td>
         </tr>
       <% end %>
       <tr>
         <td>Средний балл</td>
-        <td><%= @student.average_mark_for(semester.id).value %></td>
+        <td><%= @student.average_mark_for(semester.id).try(:value) %></td>
       </tr>
     </tbody>
   </table>
